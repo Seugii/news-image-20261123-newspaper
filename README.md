@@ -22,9 +22,11 @@ Netanyahu with the cover headline, then 8 feature tiles (4×2 grid, stories
 1–8) — each with a red label bar, a photo, a location line, a bold headline,
 a 1–2 line description and a photo credit — followed by an "ALSO ON"
 section (stories 9–24) in two columns, each entry a number, a bold keyword,
-one descriptive sentence and a source. A red-bordered DATE CHECK box and a
-small sage-green world map in the bottom-left corner close the page. Bright,
-attention-grabbing palette; legible at ~300px.
+one descriptive sentence and a source; stories 9–12 (MSCI, South Korea,
+India, Taiwan) also carry a small photo each. A red-bordered DATE CHECK
+box and a sage-green world map with red dots on the story locations in the
+bottom-left corner close the page. Bright, attention-grabbing palette;
+legible at ~300px.
 
 Every story below happened or was first reported on Monday 23 November
 2026 (any time zone), verified against wire reporting. The cover story is
@@ -63,10 +65,10 @@ Cover: Trump–Netanyahu meet at Mar-a-Lago (AP/AFP).
 6. M6.5 quake shakes deep under Vanuatu (USGS via Xinhua).
 7. Oil falls as the AI sell-off spreads (Reuters).
 8. FIFA votes today on the UK as 2035 Women's World Cup host (BBC Sport).
-9. MSCI discussed avoiding an Indonesia downgrade with Prabowo (Reuters).
-10. South Korea's finance minister sees solid growth, flags chip volatility (Reuters).
-11. Indian shares open higher; rupee 92.67 (Reuters).
-12. Taiwan's short-selling ban takes effect (FSC).
+9. MSCI discussed avoiding an Indonesia downgrade with Prabowo (Reuters). Photo: Monas, Jakarta.
+10. South Korea's finance minister sees solid growth, flags chip volatility (Reuters). Photo: Seoul City Hall.
+11. Indian shares open higher; rupee 92.67 (Reuters). Photo: BSE building, Mumbai.
+12. Taiwan's short-selling ban takes effect (FSC). Photo: Taipei 101 at sunrise.
 13. Shuri Castle main hall opens in Okinawa (AP).
 14. India and US flash PMI data due Monday (S&P Global).
 15. COP31 aftermath: UN chief "deeply disappointed" (Reuters).
@@ -91,6 +93,10 @@ Cover: Trump–Netanyahu meet at Mar-a-Lago (AP/AFP).
 - Vanuatu: "Satellite image of Vanuatu in October 1998.jpg" — Public domain.
 - Oil: "Brunei Pumpjack-1.jpg" — CC BY-SA 4.0 — DeltaSquad833.
 - FIFA: "London, Wembley - Wembley Stadium - geograph.org.uk - 2112517.jpg" — CC BY-SA 2.0 — Lewis Clarke.
+- MSCI: "Jakarta - National Monument.jpg" — CC BY 4.0 — Indies1.
+- South Korea: "Seoul City Hall 20190608 001.jpg" — CC BY-SA 4.0 — Mobius6.
+- India: "BSE - Bombay Stock Exchange Building.jpg" — CC BY 2.0 — Niyantha Shekhar.
+- Taiwan: "1 taipei sunrise panorama dxr edit pangen 141215 1.jpg" — CC BY-SA 4.0 — Chensiyuan, edit by DXR.
 - World map: "BlankMap-World.png" — Public domain — Vardion.
 
 ## How it is built
