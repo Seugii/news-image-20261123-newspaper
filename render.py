@@ -5,6 +5,13 @@ Fresh renderer for the news-image-20261123 entry. Layout mirrors the
 22 Nov newspaper that scored 0.981: cream paper, huge date masthead,
 banner photo + cover headline, 8 photo feature tiles, 16-item ALSO ON
 list, sage world map + DATE CHECK box.
+
+Revision (Xie, 23 Nov 12:27 WIB): the world map is now a real visible
+200x99 sage map with red dots on the story locations (the first build's
+map was invisible — its threshold dropped the light-grey borders), and
+stories 9-12 (MSCI, South Korea, India, Taiwan) are promoted with a
+52x40 photo thumb each. Space was freed by trimming the banner and the
+feature-tile photos.
 """
 import os
 
@@ -64,18 +71,37 @@ def cover_crop(im, tw, th, focus_y=0.5):
     return im.crop((x0, y0, x0 + tw, y0 + th))
 
 
+DOTS = [  # (lat, lon) of the main story locations, equirectangular map
+    (26.68, -80.03),   # Mar-a-Lago, Florida
+    (50.85, 4.35),     # Brussels
+    (37.57, 126.98),   # Seoul
+    (28.6, 77.2),      # Delhi
+    (36.9, 30.7),      # Antalya (COP31)
+    (25.03, 121.56),   # Taipei
+    (-6.2, 106.85),    # Jakarta
+    (-15.5, 167.0),    # Vanuatu
+]
+
+
 def sage_map(w, h):
-    """Recolour the blank world map to sage green on transparent."""
+    """Recolour the blank world map to sage green on transparent, with red
+    dots marking the main story locations. NOTE: the source map's borders
+    are light grey (~160-200), so the threshold must be 235 — the old
+    threshold of 160 rendered nothing at all."""
+    from PIL import ImageFilter
     m = Image.open(os.path.join(PHOTOS, "worldmap.png")).convert("L")
     m = m.resize((w, h), Image.LANCZOS)
+    mask = m.point(lambda v: 255 if v < 235 else 0)
+    mask = mask.filter(ImageFilter.MaxFilter(3))  # thicken hairlines
     out = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    px = m.load()
-    op = out.load()
-    for y in range(h):
-        for x in range(w):
-            v = px[x, y]
-            if v < 160:
-                op[x, y] = SAGE + (255,)
+    sage = Image.new("RGBA", (w, h), SAGE + (255,))
+    out.paste(sage, (0, 0), mask)
+    dd = ImageDraw.Draw(out)
+    for lat, lon in DOTS:
+        x = (lon + 180) / 360 * w
+        y = (90 - lat) / 180 * h
+        dd.ellipse([x - 4, y - 4, x + 4, y + 4], fill=(255, 255, 255, 255))
+        dd.ellipse([x - 3, y - 3, x + 3, y + 3], fill=RED + (255,))
     return out
 
 
@@ -182,11 +208,11 @@ def main():
     y += 22
     # masthead
     d.text((W // 2, y), "Monday 23 November 2026", font=f_mast, fill=INK, anchor="ma")
-    y += 70
+    y += 66
     # deck
     d.text((W // 2, y), "Trump meets Netanyahu at Mar-a-Lago  \u2022  Kospi slides on AI fears  \u2022  Bitcoin bounces back above $60,000",
            font=f_deck, fill=INK, anchor="ma")
-    y += 26
+    y += 22
     # ticker
     parts, widths = [], []
     for name, n, col in TICKER:
@@ -198,23 +224,23 @@ def main():
         d.rectangle([x, y + 1, x + 9, y + 10], fill=col)
         d.text((x + 13, y), f"{name} {n}", font=f_tick, fill=INK)
         x += wdt + 18
-    y += 20
+    y += 18
     d.line([(MX, y), (W - MX, y)], fill=INK, width=2)
     y += 6
 
     # banner photo
     banner = Image.open(os.path.join(PHOTOS, "banner.jpg")).convert("RGB")
-    banner = cover_crop(banner, CW, 88, focus_y=0.20)
+    banner = cover_crop(banner, CW, 66, focus_y=0.20)
     img.paste(banner, (MX, y))
-    y += 88 + 4
+    y += 66 + 4
     d.text((MX, y), COVER["caption"], font=f_cap, fill=INK)
-    y += 18
+    y += 15
     # cover headline + deck
     d.text((W // 2, y), COVER["headline"], font=f_cover, fill=INK, anchor="ma")
-    y += 46
+    y += 42
     for line in COVER["deck"]:
         d.text((W // 2, y), line, font=f_cdeck, fill=INK, anchor="ma")
-        y += 20
+        y += 19
     y += 4
     d.line([(MX, y), (W - MX, y)], fill=RED, width=2)
     y += 8
@@ -222,10 +248,10 @@ def main():
     # feature tiles 4 x 2
     gap = 12
     tw = (CW - 3 * gap) // 4
-    th_photo = 56
+    th_photo = 44
     row_h = 17 + th_photo + 3 + 13 + 34 + 30 + 10
     for row in range(2):
-        row_y = y + row * (row_h + 6)
+        row_y = y + row * (row_h + 4)
         for col in range(4):
             t = TILES[row * 4 + col]
             tx = MX + col * (tw + gap)
@@ -244,53 +270,77 @@ def main():
                 d.text((tx, ty), line, font=f_desc, fill=INK)
                 ty += 15
             d.text((tx, ty + 1), t["credit"], font=f_cred, fill=GREY)
-    y += 2 * (row_h + 6) - 6 + 6
+    y += 2 * (row_h + 4)
 
     # ALSO ON header
     d.text((MX, y), "ALSO ON MONDAY 23 NOVEMBER 2026  \u2022  16 MORE STORIES",
            font=f_also_h, fill=DARKRED)
-    y += 18
+    y += 14
     d.line([(MX, y), (W - MX, y)], fill=INK, width=1)
     y += 6
 
-    # ALSO ON items: 2 columns x 8 rows
+    # ALSO ON items: 2 columns x 8 rows. Rows 0-1 carry a 52x40 photo thumb
+    # for the four promoted stories (MSCI, South Korea, India, Taiwan);
+    # the other rows are text-only, as before.
+    PROMO = {0: ("msci.jpg", 0.45), 1: ("korea.jpg", 0.5),
+             2: ("india.jpg", 0.4), 3: ("taiwan.jpg", 0.5)}
     col_w = (CW - 24) // 2
-    row_h2 = 26
+    row_heights = [40, 40, 25, 25, 25, 25, 25, 25]
+    row_y = [y]
+    for rh in row_heights:
+        row_y.append(row_y[-1] + rh)
     for i, (key, text) in enumerate(ALSO):
         col = i % 2
         r = i // 2
         ix = MX + col * (col_w + 24)
-        iy = y + r * row_h2
+        iy = row_y[r]
         num = f"{9 + i}"
-        d.text((ix, iy), num, font=f_num, fill=DARKRED)
-        nx = ix + d.textlength(num + " ", font=f_num)
-        d.text((nx, iy + 1), key, font=f_key, fill=INK)
-        kx = nx + d.textlength(key + " ", font=f_key)
-        rest = text
-        # first line: keyword + as much text as fits; second line: remainder
-        first = wrap(d, rest, f_item, col_w - (kx - ix))
-        d.text((kx, iy + 1), first[0] if first else "", font=f_item, fill=INK)
-        if len(first) > 1:
-            d.text((ix, iy + 13), first[1], font=f_item, fill=INK)
-    y += 8 * row_h2 + 4
+        if i in PROMO:
+            ph_file, foc = PROMO[i]
+            ph = Image.open(os.path.join(PHOTOS, ph_file)).convert("RGB")
+            ph = cover_crop(ph, 52, 40, focus_y=foc)
+            img.paste(ph, (ix, iy))
+            tx = ix + 58
+            tw2 = col_w - 58
+            d.text((tx, iy), num, font=f_num, fill=DARKRED)
+            nx = tx + d.textlength(num + " ", font=f_num)
+            d.text((nx, iy + 1), key, font=f_key, fill=INK)
+            kx = nx + d.textlength(key + " ", font=f_key)
+            first = wrap(d, text, f_item, tw2 - (kx - tx))
+            d.text((kx, iy + 1), first[0] if first else "", font=f_item, fill=INK)
+            if len(first) > 1:
+                d.text((tx, iy + 13), first[1], font=f_item, fill=INK)
+            if len(first) > 2:
+                d.text((tx, iy + 25), first[2], font=f_item, fill=INK)
+        else:
+            d.text((ix, iy), num, font=f_num, fill=DARKRED)
+            nx = ix + d.textlength(num + " ", font=f_num)
+            d.text((nx, iy + 1), key, font=f_key, fill=INK)
+            kx = nx + d.textlength(key + " ", font=f_key)
+            first = wrap(d, text, f_item, col_w - (kx - ix))
+            d.text((kx, iy + 1), first[0] if first else "", font=f_item, fill=INK)
+            if len(first) > 1:
+                d.text((ix, iy + 13), first[1], font=f_item, fill=INK)
+    y = row_y[8] + 4
 
     # bottom strip: world map + DATE CHECK
     d.line([(MX, y), (W - MX, y)], fill=INK, width=2)
     y += 6
-    map_w, map_h = 160, 54
+    map_w, map_h = 200, 99
     m = sage_map(map_w, map_h)
     img.paste(m, (MX + 6, y), m)
-    d.text((MX + 6, y + map_h + 2), "STORIES FROM 7 REGIONS", font=f_cred, fill=GREY)
     bx = MX + map_w + 30
     bw = W - MX - bx
-    d.rectangle([bx, y, bx + bw, y + 54], outline=RED, width=2)
-    d.text((bx + 10, y + 5), "\u2713  DATE CHECK", font=f_date, fill=DARKRED)
-    d.text((bx + 10, y + 22), "Every story above happened or was first reported on", font=f_date2, fill=INK)
-    d.text((bx + 10, y + 37), "Monday 23 November 2026  \u2022  SENIN, 23 NOVEMBER 2026", font=f_date2, fill=INK)
-    y += 54 + 6
+    box_h = 54
+    box_y = y + (map_h - box_h) // 2
+    d.rectangle([bx, box_y, bx + bw, box_y + box_h], outline=RED, width=2)
+    d.text((bx + 10, box_y + 5), "\u2713  DATE CHECK", font=f_date, fill=DARKRED)
+    d.text((bx + 10, box_y + 22), "Every story above happened or was first reported on", font=f_date2, fill=INK)
+    d.text((bx + 10, box_y + 37), "Monday 23 November 2026  \u2022  SENIN, 23 NOVEMBER 2026", font=f_date2, fill=INK)
+    y += map_h + 6
     d.text((W // 2, y), "Built for make.fun  \u2022  news-image-20261123  \u2022  Photos: Wikimedia Commons (credits in README)",
            font=f_foot, fill=GREY, anchor="ma")
-    y += 14
+    y += 10
     print("final y =", y, "canvas H =", H)
 
     out = os.path.join(BASE, "entry.png")
