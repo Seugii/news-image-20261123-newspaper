@@ -1,0 +1,82 @@
+{
+  "bitcoin": {
+    "title": "File:Bitcoin BTC golden coin with the symbol.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Satheesh Sankaran",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Bitcoin_BTC_golden_coin_with_the_symbol.jpg"
+  },
+  "worldmap": {
+    "title": "File:BlankMap-World.png",
+    "license": "Public domain",
+    "artist": "Vardion (public domain)",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/BlankMap-World.png"
+  },
+  "banner": {
+    "title": "File:Donald Trump and Benjamin Netanyahu at White House 2025 (2).jpg",
+    "license": "Public domain",
+    "artist": "Dan Scavino",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Donald_Trump_and_Benjamin_Netanyahu_at_White_House_2025_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "page": "https://commons.wikimedia.org/wiki/File:Donald_Trump_and_Benjamin_Netanyahu_at_White_House_2025_(2).jpg"
+  },
+  "kospi": {
+    "title": "File:Han River Seoul skyline Pixabay 1214950.jpg",
+    "license": "CC0",
+    "artist": "USAGI_POST",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Han_River_Seoul_skyline_Pixabay_1214950.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "page": "https://commons.wikimedia.org/wiki/File:Han_River_Seoul_skyline_Pixabay_1214950.jpg"
+  },
+  "nato": {
+    "title": "File:Brussels-NATO headquarters.jpg",
+    "license": "CC0",
+    "artist": "Romaine",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Brussels-NATO_headquarters.jpg/1280px-Brussels-NATO_headquarters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 583,
+    "page": "https://commons.wikimedia.org/wiki/File:Brussels-NATO_headquarters.jpg"
+  },
+  "nhs": {
+    "title": "File:Mammogram.jpg",
+    "license": "Public domain",
+    "artist": "National Cancer Institute",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Mammogram.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 1200,
+    "height": 800,
+    "page": "https://commons.wikimedia.org/wiki/File:Mammogram.jpg"
+  },
+  "oil": {
+    "title": "File:Brunei Pumpjack-1.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "DeltaSquad833",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Brunei_Pumpjack-1.jpg/1280px-Brunei_Pumpjack-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 900,
+    "page": "https://commons.wikimedia.org/wiki/File:Brunei_Pumpjack-1.jpg"
+  },
+  "fifa": {
+    "title": "File:London , Wembley - Wembley Stadium - geograph.org.uk - 2112517.jpg",
+    "license": "CC BY-SA 2.0",
+    "artist": "Lewis Clarke",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/London_%2C_Wembley_-_Wembley_Stadium_-_geograph.org.uk_-_2112517.jpg/1280px-London_%2C_Wembley_-_Wembley_Stadium_-_geograph.org.uk_-_2112517.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 900,
+    "page": "https://commons.wikimedia.org/wiki/File:London_,_Wembley_-_Wembley_Stadium_-_geograph.org.uk_-_2112517.jpg"
+  },
+  "modi": {
+    "title": "File:Narendra Damodardas Modi.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Narendra Modi",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Narendra_Damodardas_Modi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 1200,
+    "height": 900,
+    "page": "https://commons.wikimedia.org/wiki/File:Narendra_Damodardas_Modi.jpg"
+  },
+  "vanuatu": {
+    "title": "File:Satellite image of Vanuatu in October 1998.jpg",
+    "license": "Public domain",
+    "artist": "",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Satellite_image_of_Vanuatu_in_October_1998.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 1200,
+    "height": 1484,
+    "page": "https://commons.wikimedia.org/wiki/File:Satellite_image_of_Vanuatu_in_October_1998.jpg"
+  }
+}
