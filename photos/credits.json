@@ -78,5 +78,41 @@
     "width": 1200,
     "height": 1484,
     "page": "https://commons.wikimedia.org/wiki/File:Satellite_image_of_Vanuatu_in_October_1998.jpg"
+  },
+  "msci": {
+    "title": "File:Jakarta - National Monument.jpg",
+    "license": "CC BY 4.0",
+    "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Indies1\" title=\"User:Indies1\">Indies1</a>",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Jakarta_-_National_Monument.jpg/1280px-Jakarta_-_National_Monument.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 1943,
+    "page": "https://commons.wikimedia.org/wiki/File%3AJakarta_-_National_Monument.jpg"
+  },
+  "korea": {
+    "title": "File:Seoul City Hall 20190608 001.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Mobius6&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Mobius6 (page does not exist)\">Mobius6</a>",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Seoul_City_Hall_20190608_001.jpg/1280px-Seoul_City_Hall_20190608_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 654,
+    "page": "https://commons.wikimedia.org/wiki/File%3ASeoul_City_Hall_20190608_001.jpg"
+  },
+  "india": {
+    "title": "File:BSE - Bombay Stock Exchange Building.jpg",
+    "license": "CC BY 2.0",
+    "artist": "Niyantha Shekhar",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/BSE_-_Bombay_Stock_Exchange_Building.jpg/1280px-BSE_-_Bombay_Stock_Exchange_Building.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 1004,
+    "page": "https://commons.wikimedia.org/wiki/File%3ABSE_-_Bombay_Stock_Exchange_Building.jpg"
+  },
+  "taiwan": {
+    "title": "File:1 taipei sunrise panorama dxr edit pangen 141215 1.jpg",
+    "license": "CC BY-SA 4.0",
+    "artist": "<a href=\"//commons.wikimedia.org/wiki/User:Chensiyuan\" title=\"User:Chensiyuan\">Chensiyuan</a>, edit by <a href=\"//commons.wikimedia.org/wiki/User:DXR\" title=\"User:DXR\">DXR</a>",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/1_taipei_sunrise_panorama_dxr_edit_pangen_141215_1.jpg/1280px-1_taipei_sunrise_panorama_dxr_edit_pangen_141215_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1200,
+    "height": 677,
+    "page": "https://commons.wikimedia.org/wiki/File%3A1_taipei_sunrise_panorama_dxr_edit_pangen_141215_1.jpg"
   }
 }
